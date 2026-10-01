@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Cypheron tokens — "inspection report": cool form paper, cobalt stamp ink. */
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f2f3ef;
+  --color-sheet: #fbfbf8;
+  --color-ink: #15202b;
+  --color-muted: #5b6570;
+  --color-rule: #cfd2ca;
+  --color-stamp: #1f4fd8;
+
+  --color-sev-critical: #9b1c5a;
+  --color-sev-high: #c8321f;
+  --color-sev-medium: #b87400;
+  --color-sev-low: #3c6e9e;
+  --color-sev-info: #6f757b;
+  --color-sev-pass: #2e7d4f;
+}
+
+html { background: var(--color-paper); color: var(--color-ink); }
+body { font-family: var(--font-sans); font-variation-settings: "wdth" 100; -webkit-font-smoothing: antialiased; }
+
+.wide { font-variation-settings: "wdth" 125; }
+.narrow { font-variation-settings: "wdth" 75; }
+
+:focus-visible { outline: 2px solid var(--color-stamp); outline-offset: 2px; }
+
+/* The one memorable moment: the grade lands like a rubber stamp. */
+@keyframes stamp-in {
+  0%   { transform: rotate(-9deg) scale(1.6); opacity: 0; }
+  60%  { transform: rotate(-6deg) scale(0.96); opacity: 1; }
+  100% { transform: rotate(-6deg) scale(1); opacity: 1; }
+}
+.stamp { transform: rotate(-6deg); animation: stamp-in 420ms cubic-bezier(.2,.8,.3,1) both; }
+
+@keyframes pulse-dot { 50% { opacity: .25; } }
+.running-dot { animation: pulse-dot 1s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp { animation: none; }
+  .running-dot { animation: none; }
+}
